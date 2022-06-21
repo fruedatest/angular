@@ -17,6 +17,6 @@ export class ClienteService {
   //Proceso asíncrono
   getClientes(): Observable<Cliente[]>{
     return of(CLIENTES);
-  }
+  } 
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from './cliente';
+import { ClienteService } from './cliente.service';
 import { CLIENTES } from './clientes.json';
 
 @Component({
@@ -10,11 +11,13 @@ import { CLIENTES } from './clientes.json';
 export class ClientesComponent implements OnInit {
   clientes!: Cliente[];
 
-  constructor() { }
+  constructor(private clienteService: ClienteService) {
+    //this.clienteService = clienteService;
+   }
 
   ngOnInit(){
     //Instanciar constante CLIENTES de otra clase en el array cliente[]
-    this.clientes = CLIENTES;
+    this.clientes = this.clienteService.getCliente();
 
   }
 

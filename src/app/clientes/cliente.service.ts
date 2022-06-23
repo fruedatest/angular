@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Cliente } from './cliente';
-import { CLIENTES } from './clientes.json';
 import { Observable } from 'rxjs';
-import { of } from 'rxjs';
-
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs';
 
 
 @Injectable({
@@ -11,12 +10,16 @@ import { of } from 'rxjs';
 })
 
 export class ClienteService {
+  private urlEndPoint: string = 'http://localhost:8000/api/clientes';
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   //Proceso asíncrono
   getClientes(): Observable<Cliente[]>{
-    return of(CLIENTES);
+    //return of(CLIENTES);
+    return this.http.get<Cliente[]>(this.urlEndPoint).pipe(
+      map(response => response as Cliente[])
+    );
   } 
 
 }

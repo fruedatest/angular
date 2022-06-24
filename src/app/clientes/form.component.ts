@@ -3,6 +3,7 @@ import { Cliente } from './cliente';
 import { ClienteService } from './cliente.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-form',
@@ -51,5 +52,7 @@ export class FormComponent implements OnInit {
       Swal.fire('Usuario actualizado', `Usuario: ${cliente.nombre} actualizado con éxito`, 'success');
     })
   }
+
+  
 
 }

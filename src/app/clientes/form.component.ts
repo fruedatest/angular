@@ -26,7 +26,7 @@ export class FormComponent implements OnInit {
   create(): void {
     this.clienteService.create(this.cliente)
       .subscribe(cliente => {
-        this.router.navigate(['/clientes'])
+        this.router.navigate(['/clientes']);
         Swal.fire('Nuevo usuario', `Usuario: ${cliente.nombre} creado con éxito`, 'success');
       }
       );
@@ -39,10 +39,17 @@ export class FormComponent implements OnInit {
         if (id){
           this.clienteService.getCliente(id).subscribe(
             (cliente) => this.cliente = cliente
-          )
+          );
         }
       }
     )
+  }
+
+  update():void{
+    this.clienteService.update(this.cliente).subscribe(cliente => {
+      this.router.navigate(['/clientes']);
+      Swal.fire('Usuario actualizado', `Usuario: ${cliente.nombre} actualizado con éxito`, 'success');
+    })
   }
 
 }

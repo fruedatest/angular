@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 })
 export class ClientesComponent implements OnInit {
   clientes: Cliente[];
+  habilitar: boolean = true;
 
   swalWithBootstrapButtons = Swal.mixin({
     customClass: {
@@ -54,7 +55,10 @@ export class ClientesComponent implements OnInit {
       }
       //#####################
     })
+  }
 
+  setHabilitar(): void{
+    this.habilitar = (this.habilitar == true) ? false : true;
   }
 
 }

@@ -1,11 +1,11 @@
-<div class="card bg-dark text-white">
+<div class="card bg-dark text-white mt-5">
     <div class="card-header"> {{titulo}}</div>
     <div class="card-body">
         
         <form (ngSubmit)="create()">
             <div class="form-group row">
                 <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
-                <div>
+                <div class="col-sm6">
                     <input type="text" class="form-control" [(ngModel)]="cliente.nombre" name="nombre">
                 </div>
             </div>
@@ -14,7 +14,7 @@
         <form>
             <div class="form-group row">
                 <label for="nombre" class="col-form-label col-sm-2">Apellido</label>
-                <div>
+                <div class="col-sm6">
                     <input type="text" class="form-control" [(ngModel)]="cliente.apellido" name="apellido">
                 </div>
             </div>
@@ -23,7 +23,7 @@
         <form>
             <div class="form-group row">
                 <label for="nombre" class="col-form-label col-sm-2">Email</label>
-                <div>
+                <div class="col-sm6">
                     <input type="text" class="form-control" [(ngModel)]="cliente.email" name="email">
                 </div>
             </div>

@@ -31,8 +31,9 @@ export class ClienteService {
 
   create(cliente: Cliente): Observable<Cliente> {
     return this.http
-      .post<Cliente>(this.urlEndPoint, cliente, { headers: this.httpHeaders })
+      .post(this.urlEndPoint, cliente, { headers: this.httpHeaders })
       .pipe(
+        map((response: any) => response.cliente as Cliente),
         catchError((e) => {
           console.error(e.error.mensaje);
           Swal.fire('Error al crear el usuario', e.error.error, 'error');
@@ -68,9 +69,9 @@ export class ClienteService {
   }
   */
 
-  update(cliente: Cliente): Observable<Cliente> {
+  update(cliente: Cliente): Observable<any> {
     return this.http
-      .put<Cliente>(`${this.urlEndPoint}/${cliente.id}`, cliente, {
+      .put<any>(`${this.urlEndPoint}/${cliente.id}`, cliente, {
         headers: this.httpHeaders,
       })
       .pipe(
@@ -90,9 +91,9 @@ export class ClienteService {
   }
   */
 
-  delete(id: number): Observable<Cliente> {
+  delete(id: number): Observable<any> {
     return this.http
-      .delete<Cliente>(`${this.urlEndPoint}/${id}`, {
+      .delete<any>(`${this.urlEndPoint}/${id}`, {
         headers: this.httpHeaders,
       })
       .pipe(catchError((e) => {

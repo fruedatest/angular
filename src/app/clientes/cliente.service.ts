@@ -20,7 +20,14 @@ export class ClienteService {
     //return of(CLIENTES);
     return this.http
       .get<Cliente[]>(this.urlEndPoint)
-      .pipe(map((response) => response as Cliente[]));
+      .pipe(
+        map(response => {
+          let clientes = response as Cliente[];
+          return clientes.map(cliente => {
+            cliente.nombre = cliente.nombre.toUpperCase();
+            return cliente;
+          })
+        }));
   }
 
   /* VERSION 1

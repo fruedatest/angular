@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Cliente } from './cliente';
 import { Observable, of, throwError } from 'rxjs';
+import { formatDate } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, catchError } from 'rxjs';
 import Swal from 'sweetalert2';
@@ -25,6 +26,7 @@ export class ClienteService {
           let clientes = response as Cliente[];
           return clientes.map(cliente => {
             cliente.nombre = cliente.nombre.toUpperCase();
+            cliente.createAt = formatDate(cliente.createAt, 'dd-MM-yyyy', 'en-US');
             return cliente;
           })
         }));

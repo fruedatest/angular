@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
   templateUrl: './form.component.html',
 })
 export class FormComponent implements OnInit {
-  titulo: string = 'Crear clientes';
+  titulo: string = 'Crear usuario';
 
   cliente: Cliente = new Cliente();
 

@@ -1,7 +1,7 @@
 <div class="card bg-dark text-white mt-5">
   <div class="card-header">{{ titulo }}</div>
   <div class="card-body">
-    <form>
+    <form #clienteForm="ngForm">
       <div class="form-group row">
         <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
         <div class="col-sm6">
@@ -27,9 +27,7 @@
           </div>
         </div>
       </div>
-    </form>
 
-    <form>
       <div class="form-group row">
         <label for="nombre" class="col-form-label col-sm-2">Apellido</label>
         <div class="col-sm6">
@@ -56,38 +54,35 @@
           </div>
         </div>
       </div>
-    </form>
 
-      <form>
-        <div class="form-group row">
-          <label for="nombre" class="col-form-label col-sm-2">Email</label>
-          <div class="col-sm6">
-            <input
-              type="text"
-              class="form-control"
-              [(ngModel)]="cliente.email"
-              name="email"
-              required
-              email
-              minlength="8"
-              #email="ngModel"
-            />
-  
-            <div
-              class="alert alert-danger"
-              *ngIf="email.invalid && (email.dirty || email.touched)"
-            >
+      <div class="form-group row">
+        <label for="nombre" class="col-form-label col-sm-2">Email</label>
+        <div class="col-sm6">
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="cliente.email"
+            name="email"
+            required
+            email
+            minlength="8"
+            #email="ngModel"
+          />
+
+          <div
+            class="alert alert-danger"
+            *ngIf="email.invalid && (email.dirty || email.touched)"
+          >
             <div *ngIf="email.errors['required']">
-                El valor del email es requerido.
-              </div>
-              <div *ngIf="email.errors['email']">
-                El email debe de tener un formato válido.
-              </div>
+              El valor del email es requerido.
+            </div>
+            <div *ngIf="email.errors['email']">
+              El email debe de tener un formato válido.
             </div>
           </div>
         </div>
-      </form>
-
+      </div>
+    </form>
 
     <div class="form-group row">
       <div class="col-sm-6">
@@ -96,6 +91,7 @@
           role="button"
           (click)="create()"
           *ngIf="!cliente.id; else elseBlock"
+          [disabled]="!clienteForm.form.valid"
         >
           Crear
         </button>

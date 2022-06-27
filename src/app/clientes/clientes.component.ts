@@ -33,21 +33,21 @@ export class ClientesComponent implements OnInit {
   delete(cliente: Cliente): void {
     Swal.fire({
       //#####################
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      title: '¿Estás seguro?',
+      text: "El usuario será borrado y no podrá revertirse",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonText: 'OK'
     }).then((result) => {
       if (result.isConfirmed) {
         this.clienteService.delete(cliente.id).subscribe(
           response =>{
             this.clientes = this.clientes.filter(cli => cli !== cliente)
             Swal.fire(
-              'Deleted!',
-              'Your file has been deleted.',
+              'Usuario eliminado',
+              'El usuario se ha eliminado con éxito.',
               'success'
             )
           }
